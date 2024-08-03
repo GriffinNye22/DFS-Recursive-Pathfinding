@@ -4,7 +4,7 @@ DFS Recursive algorithm for determining all paths and their corresponding costs 
 |----------------------:|-------------------------------------------------------------------------------------------------------------------------------|
 |**Last Modified Date:**| 2/19/20                                                                                                                       |
 |**Last Modifications:**| Fine-tuning project output and finalizing tests                                                                               |
-|     **Documentation:**| [Doc Site](https://codedocs.xyz/GriffinNye22/DFSRecursivePathfinding/)                                                        |  
+|     **Documentation:**| [Doc Site](https://codedocs.xyz/GriffinNye22/DFS-Recursive-Pathfinding/)                                                      |  
 |          **Platform:**| UNIX                                                                                                                          |
 |          **Language:**| C++                                                                                                                           |
 
