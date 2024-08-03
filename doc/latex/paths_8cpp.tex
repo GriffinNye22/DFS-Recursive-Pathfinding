@@ -1,0 +1,199 @@
+\hypertarget{paths_8cpp}{
+\section{paths.cpp File Reference}
+\label{paths_8cpp}\index{paths.cpp@{paths.cpp}}
+}
+
+
+CSC402 Dr. Spiegel Spring 2020-\/ Determines all paths and their corresponding costs from a user-\/provided starting vertex to a user-\/provided destination index. Due Date: 2/19/20 Assignment: \#1.  
+{\ttfamily \#include $<$fstream$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$map$>$}\par
+{\ttfamily \#include $<$string$>$}\par
+{\ttfamily \#include $<$sstream$>$}\par
+{\ttfamily \#include $<$stdlib.h$>$}\par
+{\ttfamily \#include $<$vector$>$}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structNode}{Node}
+\begin{DoxyCompactList}\small\item\em A structure that contains a vertex identifier and the cost to travel to said vertex from a previous vertex. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{paths_8cpp_a9d7e8af417b6d543da691e9c0e2f6f9f}{clearScreen} ()
+\begin{DoxyCompactList}\small\item\em Clears the contents of the screen for improved readability. \item\end{DoxyCompactList}\item 
+bool \hyperlink{paths_8cpp_a69f229d6954967babb9dfb98ddf638fa}{openFile} (ifstream \&file)
+\begin{DoxyCompactList}\small\item\em Prompts the user for the filename and attempts to open it, returning an error message if needed. \item\end{DoxyCompactList}\item 
+void \hyperlink{paths_8cpp_a44957dab0f8272cae89286fe85d4b765}{fillAdjList} (ifstream \&file, vector$<$ vector$<$ \hyperlink{structNode}{Node} $>$ $>$ \&adj)
+\begin{DoxyCompactList}\small\item\em Fills the adjacency list using the input text file. \item\end{DoxyCompactList}\item 
+void \hyperlink{paths_8cpp_a7b5a856695e5a34a850365325b43c603}{printAdjList} (const vector$<$ vector$<$ \hyperlink{structNode}{Node} $>$ $>$ \&adj)
+\begin{DoxyCompactList}\small\item\em Prints the contents of the adjacency list. \item\end{DoxyCompactList}\item 
+int \hyperlink{paths_8cpp_a032488f4faec8686db19ca2507d88ef6}{getStartNode} (int len)
+\begin{DoxyCompactList}\small\item\em Prompts the user for the starting vertex. \item\end{DoxyCompactList}\item 
+int \hyperlink{paths_8cpp_a40a582c4b08b0826159d155683517111}{getDestNode} (int len, int start)
+\begin{DoxyCompactList}\small\item\em Prompts the user for the destination vertex. \item\end{DoxyCompactList}\item 
+int \hyperlink{paths_8cpp_af3212f08e753ba4468a2c03b0d759b67}{findEdgeCost} (int start, int dest, const vector$<$ vector$<$ \hyperlink{structNode}{Node} $>$ $>$ \&adj)
+\begin{DoxyCompactList}\small\item\em Determines the cost to traverse edge from start to dest. \item\end{DoxyCompactList}\item 
+void \hyperlink{paths_8cpp_ad430dd02da1e691d5689b9ea6845c375}{findPaths} (int start, int dest, const vector$<$ vector$<$ \hyperlink{structNode}{Node} $>$ $>$ \&adj, map$<$ int, vector$<$ string $>$ $>$ \&pathMap)
+\begin{DoxyCompactList}\small\item\em Prepares the data structures for finding all possible paths. All paths found upon completion. \item\end{DoxyCompactList}\item 
+void \hyperlink{paths_8cpp_a558bba1be2b5af5ee53856d7689fde53}{recursiveFind} (int start, int dest, bool marked\mbox{[}$\,$\mbox{]}, vector$<$ int $>$ path, int \&idx, const vector$<$ vector$<$ \hyperlink{structNode}{Node} $>$ $>$ \&adj, int totalCost, map$<$ int, vector$<$ string $>$ $>$ \&pathMap)
+\begin{DoxyCompactList}\small\item\em Recursively finds all possible paths from the starting vertex to the destination vertex. \item\end{DoxyCompactList}\item 
+string \hyperlink{paths_8cpp_af618c9ddf1ec089664dbf117e692ef65}{pathToString} (const vector$<$ int $>$ \&path, int idx)
+\begin{DoxyCompactList}\small\item\em Converts path into a string for insertion into pathMap. \item\end{DoxyCompactList}\item 
+void \hyperlink{paths_8cpp_a5efb111d88df2e884179e0d380a9e29b}{savePath} (int totalCost, const string path, map$<$ int, vector$<$ string $>$ $>$ \&pathMap)
+\begin{DoxyCompactList}\small\item\em Saves a successful path and its totalCost. \item\end{DoxyCompactList}\item 
+void \hyperlink{paths_8cpp_a7cb92d157f6949d73f97c0d410d4ed57}{printPaths} (const map$<$ int, vector$<$ string $>$ $>$ \&pathMap)
+\begin{DoxyCompactList}\small\item\em Prints all successful paths. \item\end{DoxyCompactList}\item 
+int \hyperlink{paths_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\begin{DoxyCompactList}\small\item\em Makes function calls to open file, create adjacency list, prompt and retrieve start and dest vertices, and find and print all paths until indicated exit. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+CSC402 Dr. Spiegel Spring 2020-\/ Determines all paths and their corresponding costs from a user-\/provided starting vertex to a user-\/provided destination index. Due Date: 2/19/20 Assignment: \#1. \begin{DoxyAuthor}{Author}
+Griffin Nye 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\hypertarget{paths_8cpp_a9d7e8af417b6d543da691e9c0e2f6f9f}{
+\index{paths.cpp@{paths.cpp}!clearScreen@{clearScreen}}
+\index{clearScreen@{clearScreen}!paths.cpp@{paths.cpp}}
+\subsubsection[{clearScreen}]{\setlength{\rightskip}{0pt plus 5cm}void clearScreen ()}}
+\label{paths_8cpp_a9d7e8af417b6d543da691e9c0e2f6f9f}
+
+
+Clears the contents of the screen for improved readability. clearScreen: \hypertarget{paths_8cpp_a44957dab0f8272cae89286fe85d4b765}{
+\index{paths.cpp@{paths.cpp}!fillAdjList@{fillAdjList}}
+\index{fillAdjList@{fillAdjList}!paths.cpp@{paths.cpp}}
+\subsubsection[{fillAdjList}]{\setlength{\rightskip}{0pt plus 5cm}void fillAdjList (ifstream \& {\em file}, \/  vector$<$ vector$<$ {\bf Node} $>$ $>$ \& {\em adj})}}
+\label{paths_8cpp_a44957dab0f8272cae89286fe85d4b765}
+
+
+Fills the adjacency list using the input text file. fillAdjList: 
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]the input stream for the file-\/ INPUT/OUTPUT \item[{\em adj}]the adjacency list-\/ OUTPUT \end{DoxyParams}
+\hypertarget{paths_8cpp_af3212f08e753ba4468a2c03b0d759b67}{
+\index{paths.cpp@{paths.cpp}!findEdgeCost@{findEdgeCost}}
+\index{findEdgeCost@{findEdgeCost}!paths.cpp@{paths.cpp}}
+\subsubsection[{findEdgeCost}]{\setlength{\rightskip}{0pt plus 5cm}int findEdgeCost (int {\em start}, \/  int {\em dest}, \/  const vector$<$ vector$<$ {\bf Node} $>$ $>$ \& {\em adj})}}
+\label{paths_8cpp_af3212f08e753ba4468a2c03b0d759b67}
+
+
+Determines the cost to traverse edge from start to dest. findEdgeCost: 
+\begin{DoxyParams}{Parameters}
+\item[{\em start}]the start vertex-\/ INPUT \item[{\em dest}]the destination vertex-\/ INPUT \item[{\em adj}]the adjacency list-\/ INPUT \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+adj\mbox{[}start\mbox{]}\mbox{[}i\mbox{]}.getCost() the cost to traverse edge from start to dest -\/1 if vertices not connected 
+\end{DoxyReturn}
+\hypertarget{paths_8cpp_ad430dd02da1e691d5689b9ea6845c375}{
+\index{paths.cpp@{paths.cpp}!findPaths@{findPaths}}
+\index{findPaths@{findPaths}!paths.cpp@{paths.cpp}}
+\subsubsection[{findPaths}]{\setlength{\rightskip}{0pt plus 5cm}void findPaths (int {\em start}, \/  int {\em dest}, \/  const vector$<$ vector$<$ {\bf Node} $>$ $>$ \& {\em adj}, \/  map$<$ int, vector$<$ string $>$ $>$ \& {\em pathMap})}}
+\label{paths_8cpp_ad430dd02da1e691d5689b9ea6845c375}
+
+
+Prepares the data structures for finding all possible paths. All paths found upon completion. findPaths: 
+\begin{DoxyParams}{Parameters}
+\item[{\em start}]the starting vertex-\/ INPUT \item[{\em dest}]the destination vertex-\/ INPUT \item[{\em adj}]the adjacency list-\/ INPUT \item[{\em pathMap}]map for storing totalCost and succesful paths-\/ OUTPUT \end{DoxyParams}
+\hypertarget{paths_8cpp_a40a582c4b08b0826159d155683517111}{
+\index{paths.cpp@{paths.cpp}!getDestNode@{getDestNode}}
+\index{getDestNode@{getDestNode}!paths.cpp@{paths.cpp}}
+\subsubsection[{getDestNode}]{\setlength{\rightskip}{0pt plus 5cm}int getDestNode (int {\em len}, \/  int {\em start})}}
+\label{paths_8cpp_a40a582c4b08b0826159d155683517111}
+
+
+Prompts the user for the destination vertex. getDestNode: 
+\begin{DoxyParams}{Parameters}
+\item[{\em len}]the length of the adjacency list-\/ INPUT \item[{\em start}]the starting vertex-\/ INPUT \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+dest the destination vertex 
+\end{DoxyReturn}
+\hypertarget{paths_8cpp_a032488f4faec8686db19ca2507d88ef6}{
+\index{paths.cpp@{paths.cpp}!getStartNode@{getStartNode}}
+\index{getStartNode@{getStartNode}!paths.cpp@{paths.cpp}}
+\subsubsection[{getStartNode}]{\setlength{\rightskip}{0pt plus 5cm}int getStartNode (int {\em len})}}
+\label{paths_8cpp_a032488f4faec8686db19ca2507d88ef6}
+
+
+Prompts the user for the starting vertex. getStartNode: 
+\begin{DoxyParams}{Parameters}
+\item[{\em len}]the length of the adjacency list-\/ INPUT \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+start the starting vertex, -\/1 quits 
+\end{DoxyReturn}
+\hypertarget{paths_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{
+\index{paths.cpp@{paths.cpp}!main@{main}}
+\index{main@{main}!paths.cpp@{paths.cpp}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main ()}}
+\label{paths_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+Makes function calls to open file, create adjacency list, prompt and retrieve start and dest vertices, and find and print all paths until indicated exit. main: \begin{DoxyReturn}{Returns}
+0 successful -\/1 failure 
+\end{DoxyReturn}
+\hypertarget{paths_8cpp_a69f229d6954967babb9dfb98ddf638fa}{
+\index{paths.cpp@{paths.cpp}!openFile@{openFile}}
+\index{openFile@{openFile}!paths.cpp@{paths.cpp}}
+\subsubsection[{openFile}]{\setlength{\rightskip}{0pt plus 5cm}bool openFile (ifstream \& {\em file})}}
+\label{paths_8cpp_a69f229d6954967babb9dfb98ddf638fa}
+
+
+Prompts the user for the filename and attempts to open it, returning an error message if needed. openFile: 
+\begin{DoxyParams}{Parameters}
+\item[{\em file}]used to open the file-\/ INPUT/OUTPUT \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+fileOpen true = success, false = failure 
+\end{DoxyReturn}
+\hypertarget{paths_8cpp_af618c9ddf1ec089664dbf117e692ef65}{
+\index{paths.cpp@{paths.cpp}!pathToString@{pathToString}}
+\index{pathToString@{pathToString}!paths.cpp@{paths.cpp}}
+\subsubsection[{pathToString}]{\setlength{\rightskip}{0pt plus 5cm}string pathToString (const vector$<$ int $>$ \& {\em path}, \/  int {\em idx})}}
+\label{paths_8cpp_af618c9ddf1ec089664dbf117e692ef65}
+
+
+Converts path into a string for insertion into pathMap. pathToString: 
+\begin{DoxyParams}{Parameters}
+\item[{\em path}]a successful path-\/ INPUT \item[{\em idx}]length of the path-\/ INPUT \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+ss.str() string form of the path vector 
+\end{DoxyReturn}
+\hypertarget{paths_8cpp_a7b5a856695e5a34a850365325b43c603}{
+\index{paths.cpp@{paths.cpp}!printAdjList@{printAdjList}}
+\index{printAdjList@{printAdjList}!paths.cpp@{paths.cpp}}
+\subsubsection[{printAdjList}]{\setlength{\rightskip}{0pt plus 5cm}void printAdjList (const vector$<$ vector$<$ {\bf Node} $>$ $>$ \& {\em adj})}}
+\label{paths_8cpp_a7b5a856695e5a34a850365325b43c603}
+
+
+Prints the contents of the adjacency list. printAdjList: 
+\begin{DoxyParams}{Parameters}
+\item[{\em adj}]the adjacency list-\/ INPUT \end{DoxyParams}
+\hypertarget{paths_8cpp_a7cb92d157f6949d73f97c0d410d4ed57}{
+\index{paths.cpp@{paths.cpp}!printPaths@{printPaths}}
+\index{printPaths@{printPaths}!paths.cpp@{paths.cpp}}
+\subsubsection[{printPaths}]{\setlength{\rightskip}{0pt plus 5cm}void printPaths (const map$<$ int, vector$<$ string $>$ $>$ \& {\em pathMap})}}
+\label{paths_8cpp_a7cb92d157f6949d73f97c0d410d4ed57}
+
+
+Prints all successful paths. printPaths: 
+\begin{DoxyParams}{Parameters}
+\item[{\em pathMap}]map containing all successful paths and their total costs-\/ INPUT \end{DoxyParams}
+\hypertarget{paths_8cpp_a558bba1be2b5af5ee53856d7689fde53}{
+\index{paths.cpp@{paths.cpp}!recursiveFind@{recursiveFind}}
+\index{recursiveFind@{recursiveFind}!paths.cpp@{paths.cpp}}
+\subsubsection[{recursiveFind}]{\setlength{\rightskip}{0pt plus 5cm}void recursiveFind (int {\em start}, \/  int {\em dest}, \/  bool {\em marked}\mbox{[}$\,$\mbox{]}, \/  vector$<$ int $>$ {\em path}, \/  int \& {\em idx}, \/  const vector$<$ vector$<$ {\bf Node} $>$ $>$ \& {\em adj}, \/  int {\em totalCost}, \/  map$<$ int, vector$<$ string $>$ $>$ \& {\em pathMap})}}
+\label{paths_8cpp_a558bba1be2b5af5ee53856d7689fde53}
+
+
+Recursively finds all possible paths from the starting vertex to the destination vertex. recursiveFind: 
+\begin{DoxyParams}{Parameters}
+\item[{\em start}]the starting vertex-\/ INPUT \item[{\em dest}]the destination vertex-\/ INPUT \item[{\em marked}]array for marking visited vertices-\/ INPUT/OUTPUT \item[{\em path}]vector for storing current path-\/ INPUT/OUTPUT \item[{\em idx}]index for storing length of current path-\/ INPUT/OUTPUT \item[{\em adj}]the adjacency list-\/ INPUT \item[{\em totalCost}]the totalCost of the current traversed path-\/ INPUT/OUTPUT \item[{\em pathMap}]map for storing successful paths and their total costs-\/ INPUT/OUTPUT \end{DoxyParams}
+\hypertarget{paths_8cpp_a5efb111d88df2e884179e0d380a9e29b}{
+\index{paths.cpp@{paths.cpp}!savePath@{savePath}}
+\index{savePath@{savePath}!paths.cpp@{paths.cpp}}
+\subsubsection[{savePath}]{\setlength{\rightskip}{0pt plus 5cm}void savePath (int {\em totalCost}, \/  const string {\em path}, \/  map$<$ int, vector$<$ string $>$ $>$ \& {\em pathMap})}}
+\label{paths_8cpp_a5efb111d88df2e884179e0d380a9e29b}
+
+
+Saves a successful path and its totalCost. savePath: 
+\begin{DoxyParams}{Parameters}
+\item[{\em totalCost}]the totalCost of the path-\/ INPUT \item[{\em path}]successful path string-\/ INPUT \item[{\em pathMap}]map for storing successful paths and their total costs-\/ INPUT/OUTPUT \end{DoxyParams}
