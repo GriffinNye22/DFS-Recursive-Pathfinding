@@ -1,5 +1,5 @@
 # DFS Recursive Pathfinding
-DFS Recursive algorithm for determining all paths and their corresponding costs from a user-provided starting index to a user-provided destination index, given an input file containing mappings of Nodes and their associated costs to construct the graph.
+DFS Recursive algorithm for determining all paths and their corresponding costs from a user-provided starting index to a user-provided destination index, given an input file containing mappings of vertices and their associated costs to construct the graph.
 |                       |                                                                                                                               |
 |----------------------:|-------------------------------------------------------------------------------------------------------------------------------|
 |**Last Modified Date:**| 2/19/20                                                                                                                       |
@@ -19,7 +19,7 @@ Each element in the outer vector corresponds to a vertex in the graph, with the 
 
 Each element in the inner vector is an instance of type Node, where val corresponds to the vertex number and cost corresponds to the weight of the edge directed from the outer element to val.
 
- A vertex with no adjacent vertices contains an empty inner vector, but still exists as an element in the outer vector.
+A vertex with no adjacent vertices contains an empty inner vector, but still exists as an element in the outer vector.
 *Ex. For a graph containing a single edge of weight 2 traversing from vertex 0 to vertex 1:
 ```cpp
 adjacencyList[0][0].val = 1;
@@ -36,9 +36,9 @@ fillAdjList() assumes input text file provides vertices in chronological order s
 
 Vector of integers was chosen as the STL sequential container for holding currently traversed path.
 
-Algorithm for finding paths utilizes recursive DFS-like algorithm with a boolean array for marking vertices, an index for keeping track of path length, a vector of integers for holding the currently traversed path, and tracks the cost of the current path contained in said vector of integers.
+Algorithm for finding paths utilizes recursive DFS-like algorithm with a boolean array for marking vertices, an index for keeping track of path length, a vector of integers for holding the currently traversed path, and tracks the cost of the current path in said vector of integers.
 
-Algorithm for finding all paths broken into two functions: one preparing the additional data structures required for the recursive algorithm (findPaths) and one performing the recursion (recursiveFind).
+Algorithm for finding all paths broken into two functions: one preparing the additional data structures required for the recursive algorithm ( findPaths() ) and one performing the recursion ( recursiveFind() ).
 
 Map with key of type integer and a value with type vector of strings was chosen as the associative container for holding and ordering the set of all paths from starting vertex to destination vertex.
 
